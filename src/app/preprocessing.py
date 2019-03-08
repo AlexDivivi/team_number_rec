@@ -86,9 +86,9 @@ class Preprocessing:
             return
 
         data = self.data['clean']
-        X = np.array(data.drop([target], axis=1))
         y = np.array(data[target])
-
+        X = np.array(data.drop(target, axis=1))
+        print(y)
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=size, random_state=state)
         X_train, X_val, y_train, y_val = train_test_split(
