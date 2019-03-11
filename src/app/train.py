@@ -20,12 +20,10 @@ class Train:
         X_val = torch.as_tensor(preObj.splits['X_val'], device=device, dtype=dtype)
         y_train = torch.as_tensor(preObj.splits['y_train'], device=device, dtype=torch.long)
         y_val = torch.as_tensor(preObj.splits['y_val'], device=device, dtype=torch.long)
-        print(X_train.shape)
-        print(y_train.shape)
         return X_train, X_val, y_train, y_val
 
     @classmethod
-    def init_model(csl, D_in, D_out):
+    def init_model(cls, D_in, D_out):
         model = torch.nn.Sequential(
             torch.nn.Linear(D_in, D_out))
         return model
@@ -48,5 +46,5 @@ class Train:
                 loss_hist.append(loss.item())
                 loss_hist_val.append(loss_v.item())
                 print(t, loss.item(), loss_v.item())
-        torch.save(model.state_dict(), '../../model/model')
+        torch.save(model, '../../model/model.pt')
         return loss_hist, loss_hist_val,  model

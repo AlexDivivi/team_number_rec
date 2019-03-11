@@ -17,3 +17,5 @@ dependencies:
       - seaborn
       - sklearn
       - torch
+      - imageio
+      - scikit-image
